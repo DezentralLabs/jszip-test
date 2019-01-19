@@ -1,11 +1,14 @@
 {
-  "name": "js-zip-test",
+  "name": "jszip-test",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/styled-components": "^4.1.6",
+    "jszip": "^3.1.5",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "react-scripts-ts": "3.1.0"
+    "react-scripts-ts": "3.1.0",
+    "styled-components": "^4.1.3"
   },
   "scripts": {
     "start": "react-scripts-ts start",
