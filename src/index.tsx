@@ -8,6 +8,13 @@ const GlobalStyle = createGlobalStyle`
   ${globalStyle}
 `;
 
+declare global {
+  // tslint:disable-next-line
+  interface Window {
+    JSZip: any;
+  }
+}
+
 ReactDOM.render(
   <>
     <GlobalStyle />
