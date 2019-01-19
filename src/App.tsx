@@ -1,13 +1,8 @@
 import * as React from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import logo from "./assets/logo.svg";
 import { colors, fonts } from "./styles";
-import Button from "./components/Button";
-
-const logoSpin = keyframes`
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-`;
+import UploadButton from "./components/UploadButton";
 
 const SApp = styled.div`
   text-align: center;
@@ -20,9 +15,8 @@ const SAppHeader = styled.header`
 `;
 
 const SAppLogo = styled.img`
-  animation: ${logoSpin} infinite 20s linear;
-  margin-top: 10px;
-  height: 100px;
+  margin-top: 20px;
+  height: 70px;
 `;
 
 const SAppTitle = styled.h3`
@@ -36,7 +30,7 @@ const SAppIntro = styled.p`
 
 class App extends React.Component {
   public onUpload() {
-    console.log("clicked"); // tslint:disable-line
+    console.log("onUpload"); // tslint:disable-line
   }
   public render() {
     return (
@@ -46,7 +40,7 @@ class App extends React.Component {
           <SAppTitle>Upload Zip</SAppTitle>
         </SAppHeader>
         <SAppIntro>
-          <Button onClick={this.onUpload}>Upload</Button>
+          <UploadButton onUpload={this.onUpload}>Upload</UploadButton>
         </SAppIntro>
       </SApp>
     );
