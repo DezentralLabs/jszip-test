@@ -2,6 +2,7 @@ import * as React from "react";
 import styled, { keyframes } from "styled-components";
 import logo from "./assets/logo.svg";
 import { colors, fonts } from "./styles";
+import Button from "./components/Button";
 
 const logoSpin = keyframes`
   from { transform: rotate(0deg); }
@@ -34,15 +35,18 @@ const SAppIntro = styled.p`
 `;
 
 class App extends React.Component {
+  public onUpload() {
+    console.log("clicked"); // tslint:disable-line
+  }
   public render() {
     return (
       <SApp>
         <SAppHeader>
           <SAppLogo src={logo} alt="logo" />
-          <SAppTitle>Welcome to React</SAppTitle>
+          <SAppTitle>Upload Zip</SAppTitle>
         </SAppHeader>
         <SAppIntro>
-          To get started, edit <code>src/App.tsx</code> and save to reload.
+          <Button onClick={this.onUpload}>Upload</Button>
         </SAppIntro>
       </SApp>
     );
