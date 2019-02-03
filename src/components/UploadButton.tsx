@@ -33,6 +33,7 @@ class UploadButton extends React.Component<any, any> {
     }
   };
   public render() {
+    const { onUpload, loading, ...props } = this.props;
     return (
       <>
         <input
@@ -42,7 +43,7 @@ class UploadButton extends React.Component<any, any> {
           style={{ display: "none" }}
           onChange={this.onUpload}
         />
-        <Button onClick={this.onClick} {...this.props}>
+        <Button loading={loading} onClick={this.onClick} {...props}>
           Upload Zip
         </Button>
       </>

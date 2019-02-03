@@ -4,7 +4,7 @@ import Loader from "./Loader";
 import { colors, fonts, shadows, transitions } from "../styles";
 
 interface IButtonStyleProps {
-  fetching: boolean;
+  loading: boolean;
   outline: boolean;
   type: string;
   color: string;
@@ -119,12 +119,12 @@ const Button = (props: IButtonProps) => (
   >
     <SHoverLayer />
     <SIcon />
-    {props.fetching ? <Loader size={20} color="white" /> : props.children}
+    {props.loading ? <Loader size={20} color="white" /> : props.children}
   </SButton>
 );
 
 Button.defaultProps = {
-  fetching: false,
+  loading: false,
   outline: false,
   type: "button",
   color: "dark",
