@@ -8,7 +8,12 @@ import { colors } from "./styles";
 import UploadButton from "./components/UploadButton";
 import Button from "./components/Button";
 import { pinJsonToIpfs, fetchPinnedFile } from "./helpers/api";
-import { getFileName, getMimeType, getBase64ImgSrc } from "./helpers/utils";
+import {
+  getFileName,
+  getMimeType,
+  getBase64ImgSrc,
+  isImage
+} from "./helpers/utils";
 import { addHashToPinned, getPinnedFiles } from "./helpers/localStorage";
 import { IFileJson } from "./helpers/types";
 
@@ -78,7 +83,7 @@ class App extends React.Component {
           })
         );
         const images = files.map((fileJson: IFileJson) => {
-          const imgSrc = getBase64ImgSrc(fileJson.file);
+          const imgSrc = getBase64ImgSrc(fileJson.file, fileJson.mime);
           return imgSrc;
         });
         await this.setState({ loading: false, images });
@@ -111,7 +116,7 @@ class App extends React.Component {
     await this.setState({ loading: true });
     const zip = await JSZip.loadAsync(file);
     const imageFilePaths = Object.keys(zip.files).filter(filePath =>
-      /\.(jpe?g|png|gif|bmp)$/i.test(filePath)
+      isImage(filePath)
     );
     const imageFiles = imageFilePaths.map(path => zip.files[path]);
     const images = await Promise.all(

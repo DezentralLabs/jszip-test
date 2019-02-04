@@ -16,7 +16,7 @@ export const pinJsonToIpfs = (fileJson: IFileJson) =>
   api.post("pinning/pinJSONToIPFS", fileJson);
 
 export const fetchPinnedFile = (fileHash: string) =>
-  axios.get(`https://ipfs.io/ipfs/${fileHash}`, {
+  axios.get(`https://simple-ipfs-proxy-cmnjhguwze.now.sh/ipfs/${fileHash}`, {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json"

@@ -26,8 +26,12 @@ export function getMimeType(fileName: string) {
   return "";
 }
 
-export function getBase64ImgSrc(base64: string) {
-  const prefix = `data:image/png;base64,`;
+export function getBase64ImgSrc(base64: string, mime: string) {
+  const prefix = `data:${mime};base64,`;
   const imgSrc = `${prefix}${base64}`;
   return imgSrc;
+}
+
+export function isImage(filePath: string) {
+  return /\.(jpe?g|png|gif|bmp)$/i.test(filePath);
 }
