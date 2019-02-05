@@ -2,7 +2,7 @@ import * as React from "react";
 
 import Button from "./Button";
 
-class UploadButton extends React.Component<any, any> {
+class ImportButton extends React.Component<any, any> {
   public inputRef: React.RefObject<HTMLInputElement>;
 
   set input(value: any) {
@@ -20,10 +20,10 @@ class UploadButton extends React.Component<any, any> {
     this.inputRef = React.createRef();
   }
 
-  public onUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+  public onImport = async (event: React.ChangeEvent<HTMLInputElement>) => {
     if (this.input && event.target.files) {
       const file = event.target.files[0];
-      this.props.onUpload(file);
+      this.props.onImport(file);
     }
   };
 
@@ -33,7 +33,7 @@ class UploadButton extends React.Component<any, any> {
     }
   };
   public render() {
-    const { onUpload, loading, ...props } = this.props;
+    const { onImport, loading, ...props } = this.props;
     return (
       <>
         <input
@@ -41,7 +41,7 @@ class UploadButton extends React.Component<any, any> {
           accept="application/zip,application/x-zip,application/x-zip-compressed,application/octet-stream"
           ref={this.inputRef}
           style={{ display: "none" }}
-          onChange={this.onUpload}
+          onChange={this.onImport}
         />
         <Button loading={loading} onClick={this.onClick} {...props}>
           Upload Zip
@@ -51,4 +51,4 @@ class UploadButton extends React.Component<any, any> {
   }
 }
 
-export default UploadButton;
+export default ImportButton;

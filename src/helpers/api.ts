@@ -2,21 +2,18 @@ import axios, { AxiosInstance } from "axios";
 import { IFileJson } from "./types";
 
 const api: AxiosInstance = axios.create({
-  baseURL: "https://api.pinata.cloud/",
+  baseURL: "https://simple-ipfs-proxy-zyjcjjhlbb.now.sh",
   timeout: 30000, // 30 secs
   headers: {
     Accept: "application/json",
-    "Content-Type": "application/json",
-    pinata_api_key: process.env.REACT_APP_PINATA_API_KEY,
-    pinata_secret_api_key: process.env.REACT_APP_PINATA_SECRET_API_KEY
+    "Content-Type": "application/json"
   }
 });
 
-export const pinJsonToIpfs = (fileJson: IFileJson) =>
-  api.post("pinning/pinJSONToIPFS", fileJson);
+export const pinFile = (fileJson: IFileJson) => api.post("/pin", fileJson);
 
-export const fetchPinnedFile = (fileHash: string) =>
-  axios.get(`https://simple-ipfs-proxy-cmnjhguwze.now.sh/ipfs/${fileHash}`, {
+export const fetchFile = (fileHash: string) =>
+  api.get(`/ipfs/${fileHash}`, {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json"
